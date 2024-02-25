@@ -34,5 +34,7 @@ public abstract class User {
 		return phoneNumber;
 	}
 	
+	abstract public String toString();
+	
 	public abstract void menu(DataBase dataBase, User user);
 }

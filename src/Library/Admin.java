@@ -55,4 +55,8 @@ public class Admin extends User{
 		sc.close();
 	}
 	
+	public String toString() {
+		return name+"<N/>"+email+"<N/>"+phoneNumber+"<N/>"+"Admin";
+	}
+	
 }
