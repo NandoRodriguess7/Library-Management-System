@@ -41,7 +41,7 @@ public class Program {
 		int n = dataBase.login(phoneNumber, email);
 		if (n != -1) {
 			User user = dataBase.getUser(n);
-			user.menu();
+			user.menu(dataBase, user);
 		}
 		else {
 			System.out.println("User doesn´t exist!");;
@@ -65,7 +65,7 @@ public class Program {
 			user = new NormalUser(name, email, phoneNumber);
 		}
 		dataBase.AddUser(user);
-		user.menu();
+		user.menu(dataBase, user);
 	}
 
 }
