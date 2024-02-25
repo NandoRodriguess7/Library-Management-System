@@ -100,6 +100,15 @@ public class Book {
 		this.brwCopies = brwCopies;
 	}
 	
-	
+	public String toString2(){
+		String text = name+
+				"<N/>" + author+
+				"<N/>" + publisher+
+				"<N/>" + adress+
+				"<N/>" + String.valueOf(qty)+ 
+			    "<N/>" + String.valueOf(price)+
+				"<N/>" + String.valueOf(brwCopies);
+		return text;
+	}
 	
 }
