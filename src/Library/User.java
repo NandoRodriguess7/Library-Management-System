@@ -1,10 +1,13 @@
 package Library;
 
-public class User {
+import UI.IOOperation;
+
+public abstract class User {
 	
 	protected String name;
 	protected String email;
 	protected String phoneNumber;
+	protected IOOperation[] operations;
 	
 	public User() {
 	}
@@ -31,6 +34,5 @@ public class User {
 		return phoneNumber;
 	}
 	
-	
-	
+	public abstract void menu();
 }

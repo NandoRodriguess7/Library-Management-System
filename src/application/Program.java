@@ -2,24 +2,34 @@ package application;
 
 import java.util.Scanner;
 
+import Library.Admin;
+import Library.DataBase;
+import Library.NormalUser;
+import Library.User;
+
 public class Program {
 	
     static Scanner s;
+    static DataBase dataBase;
 	
 	public static void main(String[] args) {
 		
-		System.out.println("Welcome to Library Management System!\n"
-				+ "1. Login\n2. New User");
+	    dataBase = new DataBase();
+	    System.out.println("Welcome to Library Management System!");
 		
-		s = new Scanner(System.in);
-		
-		int n = s.nextInt();
-		
-		switch(n) {
-		case 1: login();
-		case 2: newUser();
-		default: System.out.println("Error!");
-		}
+		int num;
+		do {
+			System.out.println("0. Exit\n1. Login\n2. New User");
+			
+			s = new Scanner(System.in);
+			
+		    num = s.nextInt();
+			
+			switch(num) {
+			    case 1: login();
+			    case 2: newUser();
+			}
+		} while (num != 0);
 		
 	}
 	
@@ -28,6 +38,14 @@ public class Program {
 		String phoneNumber = s.next();
 		System.out.println("Enter email: ");
 		String email = s.next();
+		int n = dataBase.login(phoneNumber, email);
+		if (n != -1) {
+			User user = dataBase.getUser(n);
+			user.menu();
+		}
+		else {
+			System.out.println("User doesn´t exist!");;
+		}
 	}
 	
 	private static void newUser() {
@@ -37,6 +55,17 @@ public class Program {
 		String phoneNumber = s.next();
 		System.out.println("Enter email: ");
 		String email = s.next();
+		System.out.println("1. Admin\n2. Normal User");
+		int n2 = s.nextInt();
+		User user;
+		if(n2==1) {
+			user = new Admin(name, email, phoneNumber);
+		}
+		else {
+			user = new NormalUser(name, email, phoneNumber);
+		}
+		dataBase.AddUser(user);
+		user.menu();
 	}
 
 }
