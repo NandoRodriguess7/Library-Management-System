@@ -35,6 +35,7 @@ public class DataBase {
 			catch (Exception e) {}
 		}
 		getUsers();
+		getBooks();
 	}
 	
 	public void AddUser(User s) {
@@ -160,6 +161,25 @@ public class DataBase {
 		book.setPrice(Double.parseDouble(a[5]));
 		book.setBrwCopies(Integer.parseInt(a[6]));
 		return book;
+	}
+	
+	public ArrayList<Book> getAllBooks(){
+		return books;
+	}
+	
+	public int getBook(String bookName) {
+		int i = -1;
+		for (Book book : books) {
+			if (book.getName().matches(bookName));
+			i = books.indexOf(book);
+		}
+		return i;
+	}
+	
+	public void deleteBook(int i) {
+		books.remove(i);
+		bookNames.remove(i);
+		saveBooks();
 	}
 	
 }
