@@ -8,7 +8,7 @@ import Menu.DeleteBook;
 import Menu.Exit;
 import Menu.Search;
 import Menu.ViewBooks;
-import Order.ViewOrders;
+import OrderPack.ViewOrders;
 import UI.IOOperation;
 
 public class Admin extends User{
