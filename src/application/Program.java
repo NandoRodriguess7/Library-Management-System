@@ -18,18 +18,20 @@ public class Program {
 	    System.out.println("Welcome to Library Management System!");
 		
 		int num;
-		do {
-			System.out.println("0. Exit\n1. Login\n2. New User");
-			
-			s = new Scanner(System.in);
-			
-		    num = s.nextInt();
-			
-			switch(num) {
-			    case 1: login(); break;
-			    case 2: newUser(); break;
-			}
-		} while (num != 0);
+		System.out.println("0. Exit\n1. Login\n2. New User");
+
+		s = new Scanner(System.in);
+
+		num = s.nextInt();
+
+		switch (num) {
+		case 1:
+			login();
+			break;
+		case 2:
+			newUser();
+			break;
+		}
 		
 	}
 	
@@ -51,6 +53,10 @@ public class Program {
 	private static void newUser() {
 		System.out.println("Enter name: ");
 		String name = s.next();
+		if (dataBase.userExists(name)) {
+			System.out.println("User exists!");
+			newUser();
+		}
 		System.out.println("Enter phone number: ");
 		String phoneNumber = s.next();
 		System.out.println("Enter email: ");

@@ -268,7 +268,18 @@ public class DataBase {
 			}
 		}
 	}
-
+	
+	public boolean userExists(String name) {
+		boolean f = false;
+		for (User user : users) {
+			if (user.getName().toLowerCase().matches(name.toLowerCase())) {
+				f = true;
+				break;
+			}
+		}
+		return f;
+	}
+	
 	private User getUserByName(String name) {
 		User u = new NormalUser("");
 		for (User user : users) {
